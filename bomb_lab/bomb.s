@@ -8,7 +8,7 @@ Disassembly of section .init:
   400ac0:	48 83 ec 08          	sub    $0x8,%rsp
   400ac4:	e8 f3 01 00 00       	callq  400cbc <call_gmon_start>
   400ac9:	48 83 c4 08          	add    $0x8,%rsp
-  400acd:	c3                   	retq   
+  400acd:	c3                   	retq
 
 Disassembly of section .plt:
 
@@ -166,7 +166,7 @@ Disassembly of section .text:
   400ca6:	48 c7 c1 10 22 40 00 	mov    $0x402210,%rcx
   400cad:	48 c7 c7 a0 0d 40 00 	mov    $0x400da0,%rdi
   400cb4:	e8 b7 fe ff ff       	callq  400b70 <__libc_start_main@plt>
-  400cb9:	f4                   	hlt    
+  400cb9:	f4                   	hlt
   400cba:	90                   	nop
   400cbb:	90                   	nop
 
@@ -177,7 +177,7 @@ Disassembly of section .text:
   400cca:	74 02                	je     400cce <call_gmon_start+0x12>
   400ccc:	ff d0                	callq  *%rax
   400cce:	48 83 c4 08          	add    $0x8,%rsp
-  400cd2:	c3                   	retq   
+  400cd2:	c3                   	retq
   400cd3:	90                   	nop
   400cd4:	90                   	nop
   400cd5:	90                   	nop
@@ -200,7 +200,7 @@ Disassembly of section .text:
   400cf0:	48 89 e5             	mov    %rsp,%rbp
   400cf3:	77 02                	ja     400cf7 <deregister_tm_clones+0x17>
   400cf5:	5d                   	pop    %rbp
-  400cf6:	c3                   	retq   
+  400cf6:	c3                   	retq
   400cf7:	b8 00 00 00 00       	mov    $0x0,%eax
   400cfc:	48 85 c0             	test   %rax,%rax
   400cff:	74 f4                	je     400cf5 <deregister_tm_clones+0x15>
@@ -221,7 +221,7 @@ Disassembly of section .text:
   400d2d:	48 d1 f8             	sar    %rax
   400d30:	75 02                	jne    400d34 <register_tm_clones+0x24>
   400d32:	5d                   	pop    %rbp
-  400d33:	c3                   	retq   
+  400d33:	c3                   	retq
   400d34:	ba 00 00 00 00       	mov    $0x0,%edx
   400d39:	48 85 d2             	test   %rdx,%rdx
   400d3c:	74 f4                	je     400d32 <register_tm_clones+0x22>
@@ -239,12 +239,12 @@ Disassembly of section .text:
   400d5d:	e8 7e ff ff ff       	callq  400ce0 <deregister_tm_clones>
   400d62:	5d                   	pop    %rbp
   400d63:	c6 05 ee 29 20 00 01 	movb   $0x1,0x2029ee(%rip)        # 603758 <completed.6976>
-  400d6a:	f3 c3                	repz retq 
+  400d6a:	f3 c3                	repz retq
   400d6c:	0f 1f 40 00          	nopl   0x0(%rax)
 
 0000000000400d70 <frame_dummy>:
   400d70:	48 83 3d 90 20 20 00 	cmpq   $0x0,0x202090(%rip)        # 602e08 <__JCR_END__>
-  400d77:	00 
+  400d77:	00
   400d78:	74 1e                	je     400d98 <frame_dummy+0x28>
   400d7a:	b8 00 00 00 00       	mov    $0x0,%eax
   400d7f:	48 85 c0             	test   %rax,%rax
@@ -332,7 +332,7 @@ Disassembly of section .text:
   400ecb:	e8 f4 06 00 00       	callq  4015c4 <phase_defused>
   400ed0:	b8 00 00 00 00       	mov    $0x0,%eax
   400ed5:	5b                   	pop    %rbx
-  400ed6:	c3                   	retq   
+  400ed6:	c3                   	retq
   400ed7:	90                   	nop
   400ed8:	90                   	nop
   400ed9:	90                   	nop
@@ -351,7 +351,7 @@ Disassembly of section .text:
   400ef0:	74 05                	je     400ef7 <phase_1+0x17>
   400ef2:	e8 43 05 00 00       	callq  40143a <explode_bomb>
   400ef7:	48 83 c4 08          	add    $0x8,%rsp
-  400efb:	c3                   	retq   
+  400efb:	c3                   	retq
 
 0000000000400efc <phase_2>:
   400efc:	55                   	push   %rbp
@@ -378,7 +378,7 @@ Disassembly of section .text:
   400f3c:	48 83 c4 28          	add    $0x28,%rsp
   400f40:	5b                   	pop    %rbx
   400f41:	5d                   	pop    %rbp
-  400f42:	c3                   	retq   
+  400f42:	c3                   	retq
 
 0000000000400f43 <phase_3>:
   400f43:	48 83 ec 18          	sub    $0x18,%rsp
@@ -416,7 +416,7 @@ Disassembly of section .text:
   400fc2:	74 05                	je     400fc9 <phase_3+0x86>
   400fc4:	e8 71 04 00 00       	callq  40143a <explode_bomb>
   400fc9:	48 83 c4 18          	add    $0x18,%rsp
-  400fcd:	c3                   	retq   
+  400fcd:	c3                   	retq
 
 0000000000400fce <func4>:
   400fce:	48 83 ec 08          	sub    $0x8,%rsp
@@ -440,7 +440,7 @@ Disassembly of section .text:
   400ffe:	e8 cb ff ff ff       	callq  400fce <func4>
   401003:	8d 44 00 01          	lea    0x1(%rax,%rax,1),%eax
   401007:	48 83 c4 08          	add    $0x8,%rsp
-  40100b:	c3                   	retq   
+  40100b:	c3                   	retq
 
 000000000040100c <phase_4>:
   40100c:	48 83 ec 18          	sub    $0x18,%rsp
@@ -464,14 +464,14 @@ Disassembly of section .text:
   401056:	74 05                	je     40105d <phase_4+0x51>
   401058:	e8 dd 03 00 00       	callq  40143a <explode_bomb>
   40105d:	48 83 c4 18          	add    $0x18,%rsp
-  401061:	c3                   	retq   
+  401061:	c3                   	retq
 
 0000000000401062 <phase_5>:
   401062:	53                   	push   %rbx
   401063:	48 83 ec 20          	sub    $0x20,%rsp
   401067:	48 89 fb             	mov    %rdi,%rbx
   40106a:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
-  401071:	00 00 
+  401071:	00 00
   401073:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
   401078:	31 c0                	xor    %eax,%eax
   40107a:	e8 9c 02 00 00       	callq  40131b <string_length>
@@ -501,12 +501,12 @@ Disassembly of section .text:
   4010d7:	eb b2                	jmp    40108b <phase_5+0x29>
   4010d9:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
   4010de:	64 48 33 04 25 28 00 	xor    %fs:0x28,%rax
-  4010e5:	00 00 
+  4010e5:	00 00
   4010e7:	74 05                	je     4010ee <phase_5+0x8c>
   4010e9:	e8 42 fa ff ff       	callq  400b30 <__stack_chk_fail@plt>
   4010ee:	48 83 c4 20          	add    $0x20,%rsp
   4010f2:	5b                   	pop    %rbx
-  4010f3:	c3                   	retq   
+  4010f3:	c3                   	retq
 
 00000000004010f4 <phase_6>:
   4010f4:	41 56                	push   %r14
@@ -540,6 +540,7 @@ Disassembly of section .text:
   40114b:	7e e8                	jle    401135 <phase_6+0x41>
   40114d:	49 83 c5 04          	add    $0x4,%r13
   401151:	eb c1                	jmp    401114 <phase_6+0x20>
+
   401153:	48 8d 74 24 18       	lea    0x18(%rsp),%rsi
   401158:	4c 89 f0             	mov    %r14,%rax
   40115b:	b9 07 00 00 00       	mov    $0x7,%ecx
@@ -549,6 +550,7 @@ Disassembly of section .text:
   401166:	48 83 c0 04          	add    $0x4,%rax
   40116a:	48 39 f0             	cmp    %rsi,%rax
   40116d:	75 f1                	jne    401160 <phase_6+0x6c>
+
   40116f:	be 00 00 00 00       	mov    $0x0,%esi
   401174:	eb 21                	jmp    401197 <phase_6+0xa3>
   401176:	48 8b 52 08          	mov    0x8(%rdx),%rdx
@@ -567,6 +569,7 @@ Disassembly of section .text:
   40119f:	b8 01 00 00 00       	mov    $0x1,%eax
   4011a4:	ba d0 32 60 00       	mov    $0x6032d0,%edx
   4011a9:	eb cb                	jmp    401176 <phase_6+0x82>
+
   4011ab:	48 8b 5c 24 20       	mov    0x20(%rsp),%rbx
   4011b0:	48 8d 44 24 28       	lea    0x28(%rsp),%rax
   4011b5:	48 8d 74 24 50       	lea    0x50(%rsp),%rsi
@@ -579,7 +582,7 @@ Disassembly of section .text:
   4011cd:	48 89 d1             	mov    %rdx,%rcx
   4011d0:	eb eb                	jmp    4011bd <phase_6+0xc9>
   4011d2:	48 c7 42 08 00 00 00 	movq   $0x0,0x8(%rdx)
-  4011d9:	00 
+  4011d9:	00
   4011da:	bd 05 00 00 00       	mov    $0x5,%ebp
   4011df:	48 8b 43 08          	mov    0x8(%rbx),%rax
   4011e3:	8b 00                	mov    (%rax),%eax
@@ -595,7 +598,7 @@ Disassembly of section .text:
   4011fd:	41 5c                	pop    %r12
   4011ff:	41 5d                	pop    %r13
   401201:	41 5e                	pop    %r14
-  401203:	c3                   	retq   
+  401203:	c3                   	retq
 
 0000000000401204 <fun7>:
   401204:	48 83 ec 08          	sub    $0x8,%rsp
@@ -617,7 +620,7 @@ Disassembly of section .text:
   401236:	eb 05                	jmp    40123d <fun7+0x39>
   401238:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
   40123d:	48 83 c4 08          	add    $0x8,%rsp
-  401241:	c3                   	retq   
+  401241:	c3                   	retq
 
 0000000000401242 <secret_phase>:
   401242:	53                   	push   %rbx
@@ -641,7 +644,7 @@ Disassembly of section .text:
   401287:	e8 84 f8 ff ff       	callq  400b10 <puts@plt>
   40128c:	e8 33 03 00 00       	callq  4015c4 <phase_defused>
   401291:	5b                   	pop    %rbx
-  401292:	c3                   	retq   
+  401292:	c3                   	retq
   401293:	90                   	nop
   401294:	90                   	nop
   401295:	90                   	nop
@@ -694,9 +697,9 @@ Disassembly of section .text:
   401329:	29 f8                	sub    %edi,%eax
   40132b:	80 3a 00             	cmpb   $0x0,(%rdx)
   40132e:	75 f3                	jne    401323 <string_length+0x8>
-  401330:	f3 c3                	repz retq 
+  401330:	f3 c3                	repz retq
   401332:	b8 00 00 00 00       	mov    $0x0,%eax
-  401337:	c3                   	retq   
+  401337:	c3                   	retq
 
 0000000000401338 <strings_not_equal>:
   401338:	41 54                	push   %r12
@@ -736,7 +739,7 @@ Disassembly of section .text:
   40139d:	5b                   	pop    %rbx
   40139e:	5d                   	pop    %rbp
   40139f:	41 5c                	pop    %r12
-  4013a1:	c3                   	retq   
+  4013a1:	c3                   	retq
 
 00000000004013a2 <initialize_bomb>:
   4013a2:	48 83 ec 08          	sub    $0x8,%rsp
@@ -744,10 +747,10 @@ Disassembly of section .text:
   4013ab:	bf 02 00 00 00       	mov    $0x2,%edi
   4013b0:	e8 db f7 ff ff       	callq  400b90 <signal@plt>
   4013b5:	48 83 c4 08          	add    $0x8,%rsp
-  4013b9:	c3                   	retq   
+  4013b9:	c3                   	retq
 
 00000000004013ba <initialize_bomb_solve>:
-  4013ba:	f3 c3                	repz retq 
+  4013ba:	f3 c3                	repz retq
 
 00000000004013bc <blank_line>:
   4013bc:	55                   	push   %rbp
@@ -770,7 +773,7 @@ Disassembly of section .text:
   4013f2:	48 83 c4 08          	add    $0x8,%rsp
   4013f6:	5b                   	pop    %rbx
   4013f7:	5d                   	pop    %rbp
-  4013f8:	c3                   	retq   
+  4013f8:	c3                   	retq
 
 00000000004013f9 <skip>:
   4013f9:	53                   	push   %rbx
@@ -790,7 +793,7 @@ Disassembly of section .text:
   401433:	75 c5                	jne    4013fa <skip+0x1>
   401435:	48 89 d8             	mov    %rbx,%rax
   401438:	5b                   	pop    %rbx
-  401439:	c3                   	retq   
+  401439:	c3                   	retq
 
 000000000040143a <explode_bomb>:
   40143a:	48 83 ec 08          	sub    $0x8,%rsp
@@ -818,7 +821,7 @@ Disassembly of section .text:
   401492:	7f 05                	jg     401499 <read_six_numbers+0x3d>
   401494:	e8 a1 ff ff ff       	callq  40143a <explode_bomb>
   401499:	48 83 c4 18          	add    $0x18,%rsp
-  40149d:	c3                   	retq   
+  40149d:	c3                   	retq
 
 000000000040149e <read_line>:
   40149e:	48 83 ec 08          	sub    $0x8,%rsp
@@ -867,13 +870,13 @@ Disassembly of section .text:
   40155e:	8b 05 fc 21 20 00    	mov    0x2021fc(%rip),%eax        # 603760 <num_input_strings>
   401564:	8d 50 01             	lea    0x1(%rax),%edx
   401567:	89 15 f3 21 20 00    	mov    %edx,0x2021f3(%rip)        # 603760 <num_input_strings>
-  40156d:	48 98                	cltq   
+  40156d:	48 98                	cltq
   40156f:	48 6b c0 50          	imul   $0x50,%rax,%rax
   401573:	48 bf 2a 2a 2a 74 72 	movabs $0x636e7572742a2a2a,%rdi
-  40157a:	75 6e 63 
+  40157a:	75 6e 63
   40157d:	48 89 b8 80 37 60 00 	mov    %rdi,0x603780(%rax)
   401584:	48 bf 61 74 65 64 2a 	movabs $0x2a2a2a64657461,%rdi
-  40158b:	2a 2a 00 
+  40158b:	2a 2a 00
   40158e:	48 89 b8 88 37 60 00 	mov    %rdi,0x603788(%rax)
   401595:	e8 a0 fe ff ff       	callq  40143a <explode_bomb>
   40159a:	83 e9 01             	sub    $0x1,%ecx
@@ -882,17 +885,17 @@ Disassembly of section .text:
   4015a3:	48 8d 04 80          	lea    (%rax,%rax,4),%rax
   4015a7:	48 c1 e0 04          	shl    $0x4,%rax
   4015ab:	c6 84 01 80 37 60 00 	movb   $0x0,0x603780(%rcx,%rax,1)
-  4015b2:	00 
+  4015b2:	00
   4015b3:	83 c2 01             	add    $0x1,%edx
   4015b6:	89 15 a4 21 20 00    	mov    %edx,0x2021a4(%rip)        # 603760 <num_input_strings>
   4015bc:	48 89 f0             	mov    %rsi,%rax
   4015bf:	48 83 c4 08          	add    $0x8,%rsp
-  4015c3:	c3                   	retq   
+  4015c3:	c3                   	retq
 
 00000000004015c4 <phase_defused>:
   4015c4:	48 83 ec 78          	sub    $0x78,%rsp
   4015c8:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
-  4015cf:	00 00 
+  4015cf:	00 00
   4015d1:	48 89 44 24 68       	mov    %rax,0x68(%rsp)
   4015d6:	31 c0                	xor    %eax,%eax
   4015d8:	83 3d 81 21 20 00 06 	cmpl   $0x6,0x202181(%rip)        # 603760 <num_input_strings>
@@ -920,11 +923,11 @@ Disassembly of section .text:
   40163a:	e8 d1 f4 ff ff       	callq  400b10 <puts@plt>
   40163f:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
   401644:	64 48 33 04 25 28 00 	xor    %fs:0x28,%rax
-  40164b:	00 00 
+  40164b:	00 00
   40164d:	74 05                	je     401654 <phase_defused+0x90>
   40164f:	e8 dc f4 ff ff       	callq  400b30 <__stack_chk_fail@plt>
   401654:	48 83 c4 78          	add    $0x78,%rsp
-  401658:	c3                   	retq   
+  401658:	c3                   	retq
   401659:	90                   	nop
   40165a:	90                   	nop
   40165b:	90                   	nop
@@ -1032,7 +1035,7 @@ Disassembly of section .text:
   4017a5:	41 5d                	pop    %r13
   4017a7:	41 5e                	pop    %r14
   4017a9:	41 5f                	pop    %r15
-  4017ab:	c3                   	retq   
+  4017ab:	c3                   	retq
 
 00000000004017ac <submitr>:
   4017ac:	41 57                	push   %r15
@@ -1049,14 +1052,14 @@ Disassembly of section .text:
   4017cd:	4d 89 c7             	mov    %r8,%r15
   4017d0:	4c 89 cb             	mov    %r9,%rbx
   4017d3:	4c 8b b4 24 a0 a0 00 	mov    0xa0a0(%rsp),%r14
-  4017da:	00 
+  4017da:	00
   4017db:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
-  4017e2:	00 00 
+  4017e2:	00 00
   4017e4:	48 89 84 24 58 a0 00 	mov    %rax,0xa058(%rsp)
-  4017eb:	00 
+  4017eb:	00
   4017ec:	31 c0                	xor    %eax,%eax
   4017ee:	c7 44 24 2c 00 00 00 	movl   $0x0,0x2c(%rsp)
-  4017f5:	00 
+  4017f5:	00
   4017f6:	ba 00 00 00 00       	mov    $0x0,%edx
   4017fb:	be 01 00 00 00       	mov    $0x1,%esi
   401800:	bf 02 00 00 00       	mov    $0x2,%edi
@@ -1065,19 +1068,19 @@ Disassembly of section .text:
   40180d:	85 c0                	test   %eax,%eax
   40180f:	79 50                	jns    401861 <submitr+0xb5>
   401811:	48 b8 45 72 72 6f 72 	movabs $0x43203a726f727245,%rax
-  401818:	3a 20 43 
+  401818:	3a 20 43
   40181b:	49 89 06             	mov    %rax,(%r14)
   40181e:	48 b8 6c 69 65 6e 74 	movabs $0x6e7520746e65696c,%rax
-  401825:	20 75 6e 
+  401825:	20 75 6e
   401828:	49 89 46 08          	mov    %rax,0x8(%r14)
   40182c:	48 b8 61 62 6c 65 20 	movabs $0x206f7420656c6261,%rax
-  401833:	74 6f 20 
+  401833:	74 6f 20
   401836:	49 89 46 10          	mov    %rax,0x10(%r14)
   40183a:	48 b8 63 72 65 61 74 	movabs $0x7320657461657263,%rax
-  401841:	65 20 73 
+  401841:	65 20 73
   401844:	49 89 46 18          	mov    %rax,0x18(%r14)
   401848:	41 c7 46 20 6f 63 6b 	movl   $0x656b636f,0x20(%r14)
-  40184f:	65 
+  40184f:	65
   401850:	66 41 c7 46 24 74 00 	movw   $0x74,0x24(%r14)
   401857:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
   40185c:	e9 07 06 00 00       	jmpq   401e68 <submitr+0x6bc>
@@ -1086,22 +1089,22 @@ Disassembly of section .text:
   401869:	48 85 c0             	test   %rax,%rax
   40186c:	75 6b                	jne    4018d9 <submitr+0x12d>
   40186e:	48 b8 45 72 72 6f 72 	movabs $0x44203a726f727245,%rax
-  401875:	3a 20 44 
+  401875:	3a 20 44
   401878:	49 89 06             	mov    %rax,(%r14)
   40187b:	48 b8 4e 53 20 69 73 	movabs $0x6e7520736920534e,%rax
-  401882:	20 75 6e 
+  401882:	20 75 6e
   401885:	49 89 46 08          	mov    %rax,0x8(%r14)
   401889:	48 b8 61 62 6c 65 20 	movabs $0x206f7420656c6261,%rax
-  401890:	74 6f 20 
+  401890:	74 6f 20
   401893:	49 89 46 10          	mov    %rax,0x10(%r14)
   401897:	48 b8 72 65 73 6f 6c 	movabs $0x2065766c6f736572,%rax
-  40189e:	76 65 20 
+  40189e:	76 65 20
   4018a1:	49 89 46 18          	mov    %rax,0x18(%r14)
   4018a5:	48 b8 73 65 72 76 65 	movabs $0x6120726576726573,%rax
-  4018ac:	72 20 61 
+  4018ac:	72 20 61
   4018af:	49 89 46 20          	mov    %rax,0x20(%r14)
   4018b3:	41 c7 46 28 64 64 72 	movl   $0x65726464,0x28(%r14)
-  4018ba:	65 
+  4018ba:	65
   4018bb:	66 41 c7 46 2c 73 73 	movw   $0x7373,0x2c(%r14)
   4018c2:	41 c6 46 2e 00       	movb   $0x0,0x2e(%r14)
   4018c7:	44 89 e7             	mov    %r12d,%edi
@@ -1109,9 +1112,9 @@ Disassembly of section .text:
   4018cf:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
   4018d4:	e9 8f 05 00 00       	jmpq   401e68 <submitr+0x6bc>
   4018d9:	48 c7 44 24 30 00 00 	movq   $0x0,0x30(%rsp)
-  4018e0:	00 00 
+  4018e0:	00 00
   4018e2:	48 c7 44 24 38 00 00 	movq   $0x0,0x38(%rsp)
-  4018e9:	00 00 
+  4018e9:	00 00
   4018eb:	66 c7 44 24 30 02 00 	movw   $0x2,0x30(%rsp)
   4018f2:	48 63 50 14          	movslq 0x14(%rax),%rdx
   4018f6:	48 8b 40 18          	mov    0x18(%rax),%rax
@@ -1128,19 +1131,19 @@ Disassembly of section .text:
   401929:	85 c0                	test   %eax,%eax
   40192b:	79 5d                	jns    40198a <submitr+0x1de>
   40192d:	48 b8 45 72 72 6f 72 	movabs $0x55203a726f727245,%rax
-  401934:	3a 20 55 
+  401934:	3a 20 55
   401937:	49 89 06             	mov    %rax,(%r14)
   40193a:	48 b8 6e 61 62 6c 65 	movabs $0x6f7420656c62616e,%rax
-  401941:	20 74 6f 
+  401941:	20 74 6f
   401944:	49 89 46 08          	mov    %rax,0x8(%r14)
   401948:	48 b8 20 63 6f 6e 6e 	movabs $0x7463656e6e6f6320,%rax
-  40194f:	65 63 74 
+  40194f:	65 63 74
   401952:	49 89 46 10          	mov    %rax,0x10(%r14)
   401956:	48 b8 20 74 6f 20 74 	movabs $0x20656874206f7420,%rax
-  40195d:	68 65 20 
+  40195d:	68 65 20
   401960:	49 89 46 18          	mov    %rax,0x18(%r14)
   401964:	41 c7 46 20 73 65 72 	movl   $0x76726573,0x20(%r14)
-  40196b:	76 
+  40196b:	76
   40196c:	66 41 c7 46 24 65 72 	movw   $0x7265,0x24(%r14)
   401973:	41 c6 46 26 00       	movb   $0x0,0x26(%r14)
   401978:	44 89 e7             	mov    %r12d,%edi
@@ -1173,32 +1176,32 @@ Disassembly of section .text:
   4019d9:	48 3d 00 20 00 00    	cmp    $0x2000,%rax
   4019df:	76 73                	jbe    401a54 <submitr+0x2a8>
   4019e1:	48 b8 45 72 72 6f 72 	movabs $0x52203a726f727245,%rax
-  4019e8:	3a 20 52 
+  4019e8:	3a 20 52
   4019eb:	49 89 06             	mov    %rax,(%r14)
   4019ee:	48 b8 65 73 75 6c 74 	movabs $0x747320746c757365,%rax
-  4019f5:	20 73 74 
+  4019f5:	20 73 74
   4019f8:	49 89 46 08          	mov    %rax,0x8(%r14)
   4019fc:	48 b8 72 69 6e 67 20 	movabs $0x6f6f7420676e6972,%rax
-  401a03:	74 6f 6f 
+  401a03:	74 6f 6f
   401a06:	49 89 46 10          	mov    %rax,0x10(%r14)
   401a0a:	48 b8 20 6c 61 72 67 	movabs $0x202e656772616c20,%rax
-  401a11:	65 2e 20 
+  401a11:	65 2e 20
   401a14:	49 89 46 18          	mov    %rax,0x18(%r14)
   401a18:	48 b8 49 6e 63 72 65 	movabs $0x6573616572636e49,%rax
-  401a1f:	61 73 65 
+  401a1f:	61 73 65
   401a22:	49 89 46 20          	mov    %rax,0x20(%r14)
   401a26:	48 b8 20 53 55 42 4d 	movabs $0x5254494d42555320,%rax
-  401a2d:	49 54 52 
+  401a2d:	49 54 52
   401a30:	49 89 46 28          	mov    %rax,0x28(%r14)
   401a34:	48 b8 5f 4d 41 58 42 	movabs $0x46554258414d5f,%rax
-  401a3b:	55 46 00 
+  401a3b:	55 46 00
   401a3e:	49 89 46 30          	mov    %rax,0x30(%r14)
   401a42:	44 89 e7             	mov    %r12d,%edi
   401a45:	e8 06 f1 ff ff       	callq  400b50 <close@plt>
   401a4a:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
   401a4f:	e9 14 04 00 00       	jmpq   401e68 <submitr+0x6bc>
   401a54:	48 8d 94 24 40 20 00 	lea    0x2040(%rsp),%rdx
-  401a5b:	00 
+  401a5b:	00
   401a5c:	b9 00 04 00 00       	mov    $0x400,%ecx
   401a61:	b8 00 00 00 00       	mov    $0x0,%eax
   401a66:	48 89 d7             	mov    %rdx,%rdi
@@ -1247,18 +1250,18 @@ Disassembly of section .text:
   401af4:	ba 08 00 00 00       	mov    $0x8,%edx
   401af9:	be 01 00 00 00       	mov    $0x1,%esi
   401afe:	48 8d bc 24 40 80 00 	lea    0x8040(%rsp),%rdi
-  401b05:	00 
+  401b05:	00
   401b06:	b8 00 00 00 00       	mov    $0x0,%eax
   401b0b:	e8 60 f1 ff ff       	callq  400c70 <__sprintf_chk@plt>
   401b10:	0f b6 84 24 40 80 00 	movzbl 0x8040(%rsp),%eax
-  401b17:	00 
+  401b17:	00
   401b18:	88 45 00             	mov    %al,0x0(%rbp)
   401b1b:	0f b6 84 24 41 80 00 	movzbl 0x8041(%rsp),%eax
-  401b22:	00 
+  401b22:	00
   401b23:	88 45 01             	mov    %al,0x1(%rbp)
   401b26:	48 8d 45 03          	lea    0x3(%rbp),%rax
   401b2a:	0f b6 94 24 42 80 00 	movzbl 0x8042(%rsp),%edx
-  401b31:	00 
+  401b31:	00
   401b32:	88 55 02             	mov    %dl,0x2(%rbp)
   401b35:	48 83 c3 01          	add    $0x1,%rbx
   401b39:	4c 39 eb             	cmp    %r13,%rbx
@@ -1281,71 +1284,71 @@ Disassembly of section .text:
   401b74:	4d 85 ed             	test   %r13,%r13
   401b77:	79 5f                	jns    401bd8 <submitr+0x42c>
   401b79:	48 b8 45 72 72 6f 72 	movabs $0x43203a726f727245,%rax
-  401b80:	3a 20 43 
+  401b80:	3a 20 43
   401b83:	49 89 06             	mov    %rax,(%r14)
   401b86:	48 b8 6c 69 65 6e 74 	movabs $0x6e7520746e65696c,%rax
-  401b8d:	20 75 6e 
+  401b8d:	20 75 6e
   401b90:	49 89 46 08          	mov    %rax,0x8(%r14)
   401b94:	48 b8 61 62 6c 65 20 	movabs $0x206f7420656c6261,%rax
-  401b9b:	74 6f 20 
+  401b9b:	74 6f 20
   401b9e:	49 89 46 10          	mov    %rax,0x10(%r14)
   401ba2:	48 b8 77 72 69 74 65 	movabs $0x6f74206574697277,%rax
-  401ba9:	20 74 6f 
+  401ba9:	20 74 6f
   401bac:	49 89 46 18          	mov    %rax,0x18(%r14)
   401bb0:	48 b8 20 74 68 65 20 	movabs $0x7265732065687420,%rax
-  401bb7:	73 65 72 
+  401bb7:	73 65 72
   401bba:	49 89 46 20          	mov    %rax,0x20(%r14)
   401bbe:	41 c7 46 28 76 65 72 	movl   $0x726576,0x28(%r14)
-  401bc5:	00 
+  401bc5:	00
   401bc6:	44 89 e7             	mov    %r12d,%edi
   401bc9:	e8 82 ef ff ff       	callq  400b50 <close@plt>
   401bce:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
   401bd3:	e9 90 02 00 00       	jmpq   401e68 <submitr+0x6bc>
   401bd8:	44 89 a4 24 40 80 00 	mov    %r12d,0x8040(%rsp)
-  401bdf:	00 
+  401bdf:	00
   401be0:	c7 84 24 44 80 00 00 	movl   $0x0,0x8044(%rsp)
-  401be7:	00 00 00 00 
+  401be7:	00 00 00 00
   401beb:	48 8d 84 24 50 80 00 	lea    0x8050(%rsp),%rax
-  401bf2:	00 
+  401bf2:	00
   401bf3:	48 89 84 24 48 80 00 	mov    %rax,0x8048(%rsp)
-  401bfa:	00 
+  401bfa:	00
   401bfb:	ba 00 20 00 00       	mov    $0x2000,%edx
   401c00:	48 8d 74 24 40       	lea    0x40(%rsp),%rsi
   401c05:	48 8d bc 24 40 80 00 	lea    0x8040(%rsp),%rdi
-  401c0c:	00 
+  401c0c:	00
   401c0d:	e8 7c fa ff ff       	callq  40168e <rio_readlineb>
   401c12:	48 85 c0             	test   %rax,%rax
   401c15:	7f 74                	jg     401c8b <submitr+0x4df>
   401c17:	48 b8 45 72 72 6f 72 	movabs $0x43203a726f727245,%rax
-  401c1e:	3a 20 43 
+  401c1e:	3a 20 43
   401c21:	49 89 06             	mov    %rax,(%r14)
   401c24:	48 b8 6c 69 65 6e 74 	movabs $0x6e7520746e65696c,%rax
-  401c2b:	20 75 6e 
+  401c2b:	20 75 6e
   401c2e:	49 89 46 08          	mov    %rax,0x8(%r14)
   401c32:	48 b8 61 62 6c 65 20 	movabs $0x206f7420656c6261,%rax
-  401c39:	74 6f 20 
+  401c39:	74 6f 20
   401c3c:	49 89 46 10          	mov    %rax,0x10(%r14)
   401c40:	48 b8 72 65 61 64 20 	movabs $0x7269662064616572,%rax
-  401c47:	66 69 72 
+  401c47:	66 69 72
   401c4a:	49 89 46 18          	mov    %rax,0x18(%r14)
   401c4e:	48 b8 73 74 20 68 65 	movabs $0x6564616568207473,%rax
-  401c55:	61 64 65 
+  401c55:	61 64 65
   401c58:	49 89 46 20          	mov    %rax,0x20(%r14)
   401c5c:	48 b8 72 20 66 72 6f 	movabs $0x73206d6f72662072,%rax
-  401c63:	6d 20 73 
+  401c63:	6d 20 73
   401c66:	49 89 46 28          	mov    %rax,0x28(%r14)
   401c6a:	41 c7 46 30 65 72 76 	movl   $0x65767265,0x30(%r14)
-  401c71:	65 
+  401c71:	65
   401c72:	66 41 c7 46 34 72 00 	movw   $0x72,0x34(%r14)
   401c79:	44 89 e7             	mov    %r12d,%edi
   401c7c:	e8 cf ee ff ff       	callq  400b50 <close@plt>
   401c81:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
   401c86:	e9 dd 01 00 00       	jmpq   401e68 <submitr+0x6bc>
   401c8b:	4c 8d 84 24 40 60 00 	lea    0x6040(%rsp),%r8
-  401c92:	00 
+  401c92:	00
   401c93:	48 8d 4c 24 2c       	lea    0x2c(%rsp),%rcx
   401c98:	48 8d 94 24 40 40 00 	lea    0x4040(%rsp),%rdx
-  401c9f:	00 
+  401c9f:	00
   401ca0:	be 4f 27 40 00       	mov    $0x40274f,%esi
   401ca5:	48 8d 7c 24 40       	lea    0x40(%rsp),%rdi
   401caa:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -1354,7 +1357,7 @@ Disassembly of section .text:
   401cb9:	41 81 f8 c8 00 00 00 	cmp    $0xc8,%r8d
   401cc0:	0f 84 be 00 00 00    	je     401d84 <submitr+0x5d8>
   401cc6:	4c 8d 8c 24 40 60 00 	lea    0x6040(%rsp),%r9
-  401ccd:	00 
+  401ccd:	00
   401cce:	b9 a0 26 40 00       	mov    $0x4026a0,%ecx
   401cd3:	48 c7 c2 ff ff ff ff 	mov    $0xffffffffffffffff,%rdx
   401cda:	be 01 00 00 00       	mov    $0x1,%esi
@@ -1368,27 +1371,27 @@ Disassembly of section .text:
   401cfe:	ba 00 20 00 00       	mov    $0x2000,%edx
   401d03:	48 8d 74 24 40       	lea    0x40(%rsp),%rsi
   401d08:	48 8d bc 24 40 80 00 	lea    0x8040(%rsp),%rdi
-  401d0f:	00 
+  401d0f:	00
   401d10:	e8 79 f9 ff ff       	callq  40168e <rio_readlineb>
   401d15:	48 85 c0             	test   %rax,%rax
   401d18:	7f 6a                	jg     401d84 <submitr+0x5d8>
   401d1a:	48 b8 45 72 72 6f 72 	movabs $0x43203a726f727245,%rax
-  401d21:	3a 20 43 
+  401d21:	3a 20 43
   401d24:	49 89 06             	mov    %rax,(%r14)
   401d27:	48 b8 6c 69 65 6e 74 	movabs $0x6e7520746e65696c,%rax
-  401d2e:	20 75 6e 
+  401d2e:	20 75 6e
   401d31:	49 89 46 08          	mov    %rax,0x8(%r14)
   401d35:	48 b8 61 62 6c 65 20 	movabs $0x206f7420656c6261,%rax
-  401d3c:	74 6f 20 
+  401d3c:	74 6f 20
   401d3f:	49 89 46 10          	mov    %rax,0x10(%r14)
   401d43:	48 b8 72 65 61 64 20 	movabs $0x6165682064616572,%rax
-  401d4a:	68 65 61 
+  401d4a:	68 65 61
   401d4d:	49 89 46 18          	mov    %rax,0x18(%r14)
   401d51:	48 b8 64 65 72 73 20 	movabs $0x6f72662073726564,%rax
-  401d58:	66 72 6f 
+  401d58:	66 72 6f
   401d5b:	49 89 46 20          	mov    %rax,0x20(%r14)
   401d5f:	48 b8 6d 20 73 65 72 	movabs $0x726576726573206d,%rax
-  401d66:	76 65 72 
+  401d66:	76 65 72
   401d69:	49 89 46 28          	mov    %rax,0x28(%r14)
   401d6d:	41 c6 46 30 00       	movb   $0x0,0x30(%r14)
   401d72:	44 89 e7             	mov    %r12d,%edi
@@ -1404,30 +1407,30 @@ Disassembly of section .text:
   401da5:	ba 00 20 00 00       	mov    $0x2000,%edx
   401daa:	48 8d 74 24 40       	lea    0x40(%rsp),%rsi
   401daf:	48 8d bc 24 40 80 00 	lea    0x8040(%rsp),%rdi
-  401db6:	00 
+  401db6:	00
   401db7:	e8 d2 f8 ff ff       	callq  40168e <rio_readlineb>
   401dbc:	48 85 c0             	test   %rax,%rax
   401dbf:	7f 70                	jg     401e31 <submitr+0x685>
   401dc1:	48 b8 45 72 72 6f 72 	movabs $0x43203a726f727245,%rax
-  401dc8:	3a 20 43 
+  401dc8:	3a 20 43
   401dcb:	49 89 06             	mov    %rax,(%r14)
   401dce:	48 b8 6c 69 65 6e 74 	movabs $0x6e7520746e65696c,%rax
-  401dd5:	20 75 6e 
+  401dd5:	20 75 6e
   401dd8:	49 89 46 08          	mov    %rax,0x8(%r14)
   401ddc:	48 b8 61 62 6c 65 20 	movabs $0x206f7420656c6261,%rax
-  401de3:	74 6f 20 
+  401de3:	74 6f 20
   401de6:	49 89 46 10          	mov    %rax,0x10(%r14)
   401dea:	48 b8 72 65 61 64 20 	movabs $0x6174732064616572,%rax
-  401df1:	73 74 61 
+  401df1:	73 74 61
   401df4:	49 89 46 18          	mov    %rax,0x18(%r14)
   401df8:	48 b8 74 75 73 20 6d 	movabs $0x7373656d20737574,%rax
-  401dff:	65 73 73 
+  401dff:	65 73 73
   401e02:	49 89 46 20          	mov    %rax,0x20(%r14)
   401e06:	48 b8 61 67 65 20 66 	movabs $0x6d6f726620656761,%rax
-  401e0d:	72 6f 6d 
+  401e0d:	72 6f 6d
   401e10:	49 89 46 28          	mov    %rax,0x28(%r14)
   401e14:	48 b8 20 73 65 72 76 	movabs $0x72657672657320,%rax
-  401e1b:	65 72 00 
+  401e1b:	65 72 00
   401e1e:	49 89 46 30          	mov    %rax,0x30(%r14)
   401e22:	44 89 e7             	mov    %r12d,%edi
   401e25:	e8 26 ed ff ff       	callq  400b50 <close@plt>
@@ -1450,13 +1453,13 @@ Disassembly of section .text:
   401e63:	0f b6 c0             	movzbl %al,%eax
   401e66:	f7 d8                	neg    %eax
   401e68:	48 8b 94 24 58 a0 00 	mov    0xa058(%rsp),%rdx
-  401e6f:	00 
+  401e6f:	00
   401e70:	64 48 33 14 25 28 00 	xor    %fs:0x28,%rdx
-  401e77:	00 00 
+  401e77:	00 00
   401e79:	0f 84 00 01 00 00    	je     401f7f <submitr+0x7d3>
   401e7f:	e9 f6 00 00 00       	jmpq   401f7a <submitr+0x7ce>
   401e84:	48 8d 84 24 40 20 00 	lea    0x2040(%rsp),%rax
-  401e8b:	00 
+  401e8b:	00
   401e8c:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
   401e91:	4c 89 3c 24          	mov    %r15,(%rsp)
   401e95:	4c 8b 4c 24 18       	mov    0x18(%rsp),%r9
@@ -1479,28 +1482,28 @@ Disassembly of section .text:
   401ee3:	48 8d 6c 24 40       	lea    0x40(%rsp),%rbp
   401ee8:	e9 5d fc ff ff       	jmpq   401b4a <submitr+0x39e>
   401eed:	48 b8 45 72 72 6f 72 	movabs $0x52203a726f727245,%rax
-  401ef4:	3a 20 52 
+  401ef4:	3a 20 52
   401ef7:	49 89 06             	mov    %rax,(%r14)
   401efa:	48 b8 65 73 75 6c 74 	movabs $0x747320746c757365,%rax
-  401f01:	20 73 74 
+  401f01:	20 73 74
   401f04:	49 89 46 08          	mov    %rax,0x8(%r14)
   401f08:	48 b8 72 69 6e 67 20 	movabs $0x6e6f6320676e6972,%rax
-  401f0f:	63 6f 6e 
+  401f0f:	63 6f 6e
   401f12:	49 89 46 10          	mov    %rax,0x10(%r14)
   401f16:	48 b8 74 61 69 6e 73 	movabs $0x6e6120736e696174,%rax
-  401f1d:	20 61 6e 
+  401f1d:	20 61 6e
   401f20:	49 89 46 18          	mov    %rax,0x18(%r14)
   401f24:	48 b8 20 69 6c 6c 65 	movabs $0x6c6167656c6c6920,%rax
-  401f2b:	67 61 6c 
+  401f2b:	67 61 6c
   401f2e:	49 89 46 20          	mov    %rax,0x20(%r14)
   401f32:	48 b8 20 6f 72 20 75 	movabs $0x72706e7520726f20,%rax
-  401f39:	6e 70 72 
+  401f39:	6e 70 72
   401f3c:	49 89 46 28          	mov    %rax,0x28(%r14)
   401f40:	48 b8 69 6e 74 61 62 	movabs $0x20656c6261746e69,%rax
-  401f47:	6c 65 20 
+  401f47:	6c 65 20
   401f4a:	49 89 46 30          	mov    %rax,0x30(%r14)
   401f4e:	48 b8 63 68 61 72 61 	movabs $0x6574636172616863,%rax
-  401f55:	63 74 65 
+  401f55:	63 74 65
   401f58:	49 89 46 38          	mov    %rax,0x38(%r14)
   401f5c:	66 41 c7 46 40 72 2e 	movw   $0x2e72,0x40(%r14)
   401f63:	41 c6 46 42 00       	movb   $0x0,0x42(%r14)
@@ -1516,7 +1519,7 @@ Disassembly of section .text:
   401f8a:	41 5d                	pop    %r13
   401f8c:	41 5e                	pop    %r14
   401f8e:	41 5f                	pop    %r15
-  401f90:	c3                   	retq   
+  401f90:	c3                   	retq
 
 0000000000401f91 <init_timeout>:
   401f91:	53                   	push   %rbx
@@ -1531,7 +1534,7 @@ Disassembly of section .text:
   401fae:	0f 49 fb             	cmovns %ebx,%edi
   401fb1:	e8 8a eb ff ff       	callq  400b40 <alarm@plt>
   401fb6:	5b                   	pop    %rbx
-  401fb7:	c3                   	retq   
+  401fb7:	c3                   	retq
 
 0000000000401fb8 <init_driver>:
   401fb8:	55                   	push   %rbp
@@ -1539,7 +1542,7 @@ Disassembly of section .text:
   401fba:	48 83 ec 28          	sub    $0x28,%rsp
   401fbe:	48 89 fd             	mov    %rdi,%rbp
   401fc1:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
-  401fc8:	00 00 
+  401fc8:	00 00
   401fca:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
   401fcf:	31 c0                	xor    %eax,%eax
   401fd1:	be 01 00 00 00       	mov    $0x1,%esi
@@ -1559,16 +1562,16 @@ Disassembly of section .text:
   402014:	85 c0                	test   %eax,%eax
   402016:	79 4f                	jns    402067 <init_driver+0xaf>
   402018:	48 b8 45 72 72 6f 72 	movabs $0x43203a726f727245,%rax
-  40201f:	3a 20 43 
+  40201f:	3a 20 43
   402022:	48 89 45 00          	mov    %rax,0x0(%rbp)
   402026:	48 b8 6c 69 65 6e 74 	movabs $0x6e7520746e65696c,%rax
-  40202d:	20 75 6e 
+  40202d:	20 75 6e
   402030:	48 89 45 08          	mov    %rax,0x8(%rbp)
   402034:	48 b8 61 62 6c 65 20 	movabs $0x206f7420656c6261,%rax
-  40203b:	74 6f 20 
+  40203b:	74 6f 20
   40203e:	48 89 45 10          	mov    %rax,0x10(%rbp)
   402042:	48 b8 63 72 65 61 74 	movabs $0x7320657461657263,%rax
-  402049:	65 20 73 
+  402049:	65 20 73
   40204c:	48 89 45 18          	mov    %rax,0x18(%rbp)
   402050:	c7 45 20 6f 63 6b 65 	movl   $0x656b636f,0x20(%rbp)
   402057:	66 c7 45 24 74 00    	movw   $0x74,0x24(%rbp)
@@ -1579,19 +1582,19 @@ Disassembly of section .text:
   402071:	48 85 c0             	test   %rax,%rax
   402074:	75 68                	jne    4020de <init_driver+0x126>
   402076:	48 b8 45 72 72 6f 72 	movabs $0x44203a726f727245,%rax
-  40207d:	3a 20 44 
+  40207d:	3a 20 44
   402080:	48 89 45 00          	mov    %rax,0x0(%rbp)
   402084:	48 b8 4e 53 20 69 73 	movabs $0x6e7520736920534e,%rax
-  40208b:	20 75 6e 
+  40208b:	20 75 6e
   40208e:	48 89 45 08          	mov    %rax,0x8(%rbp)
   402092:	48 b8 61 62 6c 65 20 	movabs $0x206f7420656c6261,%rax
-  402099:	74 6f 20 
+  402099:	74 6f 20
   40209c:	48 89 45 10          	mov    %rax,0x10(%rbp)
   4020a0:	48 b8 72 65 73 6f 6c 	movabs $0x2065766c6f736572,%rax
-  4020a7:	76 65 20 
+  4020a7:	76 65 20
   4020aa:	48 89 45 18          	mov    %rax,0x18(%rbp)
   4020ae:	48 b8 73 65 72 76 65 	movabs $0x6120726576726573,%rax
-  4020b5:	72 20 61 
+  4020b5:	72 20 61
   4020b8:	48 89 45 20          	mov    %rax,0x20(%rbp)
   4020bc:	c7 45 28 64 64 72 65 	movl   $0x65726464,0x28(%rbp)
   4020c3:	66 c7 45 2c 73 73    	movw   $0x7373,0x2c(%rbp)
@@ -1601,9 +1604,9 @@ Disassembly of section .text:
   4020d4:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
   4020d9:	e9 93 00 00 00       	jmpq   402171 <init_driver+0x1b9>
   4020de:	48 c7 04 24 00 00 00 	movq   $0x0,(%rsp)
-  4020e5:	00 
+  4020e5:	00
   4020e6:	48 c7 44 24 08 00 00 	movq   $0x0,0x8(%rsp)
-  4020ed:	00 00 
+  4020ed:	00 00
   4020ef:	66 c7 04 24 02 00    	movw   $0x2,(%rsp)
   4020f5:	48 63 50 14          	movslq 0x14(%rax),%rdx
   4020f9:	48 8b 40 18          	mov    0x18(%rax),%rax
@@ -1636,13 +1639,13 @@ Disassembly of section .text:
   40216c:	b8 00 00 00 00       	mov    $0x0,%eax
   402171:	48 8b 4c 24 18       	mov    0x18(%rsp),%rcx
   402176:	64 48 33 0c 25 28 00 	xor    %fs:0x28,%rcx
-  40217d:	00 00 
+  40217d:	00 00
   40217f:	74 05                	je     402186 <init_driver+0x1ce>
   402181:	e8 aa e9 ff ff       	callq  400b30 <__stack_chk_fail@plt>
   402186:	48 83 c4 28          	add    $0x28,%rsp
   40218a:	5b                   	pop    %rbx
   40218b:	5d                   	pop    %rbp
-  40218c:	c3                   	retq   
+  40218c:	c3                   	retq
 
 000000000040218d <driver_post>:
   40218d:	53                   	push   %rbx
@@ -1677,7 +1680,7 @@ Disassembly of section .text:
   4021f9:	b8 00 00 00 00       	mov    $0x0,%eax
   4021fe:	48 83 c4 10          	add    $0x10,%rsp
   402202:	5b                   	pop    %rbx
-  402203:	c3                   	retq   
+  402203:	c3                   	retq
   402204:	90                   	nop
   402205:	90                   	nop
   402206:	90                   	nop
@@ -1725,11 +1728,11 @@ Disassembly of section .text:
   40228a:	4c 8b 74 24 28       	mov    0x28(%rsp),%r14
   40228f:	4c 8b 7c 24 30       	mov    0x30(%rsp),%r15
   402294:	48 83 c4 38          	add    $0x38,%rsp
-  402298:	c3                   	retq   
+  402298:	c3                   	retq
   402299:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
 
 00000000004022a0 <__libc_csu_fini>:
-  4022a0:	f3 c3                	repz retq 
+  4022a0:	f3 c3                	repz retq
   4022a2:	90                   	nop
   4022a3:	90                   	nop
 
@@ -1738,4 +1741,4 @@ Disassembly of section .fini:
 00000000004022a4 <_fini>:
   4022a4:	48 83 ec 08          	sub    $0x8,%rsp
   4022a8:	48 83 c4 08          	add    $0x8,%rsp
-  4022ac:	c3                   	retq   
+  4022ac:	c3                   	retq
