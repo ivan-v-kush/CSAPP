@@ -64,20 +64,6 @@ int main(int argc, char *argv[])
         parsed_line[len-1]='\0';
         char *temp_ptr; //for the usage of strtol
         address = strtol(temp, &temp_ptr, 16);
-        // if(cache_set.valid && cache_set.tag == getTag(address)){
-        //     hit ++;
-        //     if(verbose) printf("%s hit\n", parsed_line);
-        // }else if(cache_set.valid && cache_set.tag != getTag(address)){
-        //     cache[getSet(address)].tag = getTag(address);
-        //     miss ++;
-        //     evict ++;
-        //     if(verbose) printf("%s miss eviction\n", parsed_line);
-        // }else{
-        //     cache[getSet(address)].valid = 1;
-        //     cache[getSet(address)].tag = getTag(address);
-        //     miss ++;
-        //     if(verbose) printf("%s miss\n", parsed_line);
-        // }
         if (instruction=='L' || instruction == 'S'){
             loadAndStore(&cache[getSet(address)], address, parsed_line);
         }else{
@@ -141,7 +127,7 @@ void loadAndStore(CacheLine *cache, long address, char* parsed_line){
         hit ++;
         if(verbose) printf("%s hit\n", parsed_line);
     }else if(cache_set.valid && cache_set.tag != getTag(address)){
-        cache[getSet(address)].tag = getTag(address);
+        (*cache).tag = getTag(address);
         miss ++;
         evict ++;
         if(verbose) printf("%s miss eviction\n", parsed_line);
