@@ -167,19 +167,35 @@ int main(int argc, char **argv)
 */
 void eval(char *cmdline)
 {
-    char **argv = NULL;
-    parseline(cmdline, argv);
-    if(argv[0] == NULL) return; //ignore empty command line
-    // Handle the built-in command
-    if(strcmp(argv[0], "quit") != 0){
-        exit(0);
-    }
-
-    // Handle the other command
+    char *argv[MAXARGS]; // Argument list for execve()
+    char buf[MAXLINE]; //Parsed command line
     pid_t pid;
-    if((pid = fork()) < 0){
-        fprintf(stderr, "fork error: %s\n", strerror(errno));
-        exit(0);
+    int bg;
+
+    strcpy(buf, cmdline);
+    bg = parseline(buf, argv);
+    if(argv[0] == NULL) return; //ignore empty command line
+
+    if(!builtin_cmd(argv)){
+        if((pid = fork()) < 0){
+            unix_error("fork error:");
+        }
+        //code for chile process
+        if(pid == 0){
+            if(execve(argv[0], argv, environ) < 0){
+                unix_error("Command not found");
+            }
+        }
+        if(!bg){
+            // foreground jobs
+            int status;
+            if(waitpid(pid, &status, 0) < 0)
+                unix_error("waitpid:");
+        }else{
+            // background jobs
+            addjob(jobs, pid, BG, cmdline);
+            printf("[%d] (%d) %s", pid2jid(pid), pid, cmdline);
+        }
     }
 
     return;
@@ -248,7 +264,11 @@ int parseline(const char *cmdline, char **argv)
  */
 int builtin_cmd(char **argv)
 {
-    return 0;     /* not a builtin command */
+    if(strcmp(argv[0], "jobs") && strcmp(argv[0], "bg") && strcmp(argv[0], "fg") && strcmp(argv[0], "quit")) return 0;
+    if(strcmp(argv[0], "quit")){
+        exit(0);
+    }
+    return 1;     /* not a builtin command */
 }
 
 /*
