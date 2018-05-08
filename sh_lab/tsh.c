@@ -188,8 +188,12 @@ void eval(char *cmdline)
         //code for chile process
         if(pid == 0){
             sigprocmask(SIG_SETMASK, &previous, NULL);
+            if(setpgid(0, 0) < 0){
+                unix_error("setpgid:");
+            }
             if(execve(argv[0], argv, environ) < 0){
-                unix_error("Command not found");
+                printf("%s: Command not found\n", argv[0]);
+                exit(0);
             }
         }
         else{
@@ -341,7 +345,7 @@ void do_bgfg(char **argv)
             waitfg(job->pid);
         }else{
             job->state = FG;
-            kill(job->pid, SIGCONT);
+            kill(-job->pid, SIGCONT);
             waitfg(job->pid);
         }
 
@@ -415,7 +419,7 @@ void sigint_handler(int sig)
 {
     pid_t current_fg = fgpid(jobs);
     if(current_fg){
-        kill(current_fg, sig);
+        kill(-current_fg, sig); // why ?
     }
     return;
 }
@@ -429,7 +433,7 @@ void sigtstp_handler(int sig)
 {
     pid_t current_fg = fgpid(jobs);
     if(current_fg){
-        kill(current_fg, sig);
+        kill(-current_fg, sig);
     }
     return;
 }
