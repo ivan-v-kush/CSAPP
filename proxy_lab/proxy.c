@@ -6,7 +6,7 @@
 #define MAX_CACHE_SIZE 1049000
 #define MAX_OBJECT_SIZE 102400
 #define MAX_THREAD 50
-#define CACHE 3
+#define CACHE_SIZE 3
 
 /* You won't lose style points for including this long line in your code */
 static const char *user_agent_hdr = "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:10.0.3) Gecko/20120305 Firefox/10.0.3\r\n";
@@ -21,14 +21,18 @@ static const char *user_agent_key= "User-Agent";
 static const char *proxy_connection_key = "Proxy-Connection";
 static const char *host_key = "Host";
 
-typedef struct {
+
+typedef struct Cache_file Cache_file;
+struct Cache_file{
     char uri[MAXLINE];
-    struct Cache_file* next;
+    int valid;
     int length;
-}Cache_file;
+    Cache_file* prev;
+    Cache_file* next;
+};
 
 sem_t LOG, CACHE;
-struct Cache_file* CACHE_FILE;
+Cache_file* CACHE_FILE;
 
 void client_error(int fd, char *cause, char*errnum, char* shortmsg, char* longmsg);
 int connect_to_endserver(char* hostname, int port);
@@ -37,7 +41,7 @@ void build_http_header(char *http_header,char *hostname,char *path,int port,rio_
 void format_log_entry(char *logstring, int conn_fd, char *uri, int size);
 void* proxy(void* conn_fd);
 int check_cache(char *uri);
-void add_cache(char* uri, int length);
+void change_cache(char* uri, int length);
 
 
 int main(int argc, char *argv[])
@@ -58,9 +62,15 @@ int main(int argc, char *argv[])
     sem_init(&LOG, 0, 1);
     sem_init(&CACHE, 0, 1);
     //cache opeartion
-    cache = malloc(CACHE*sizeof(Cache_file));
-    for(int i = 0; i < CACHE; ++i){
-        CACHE_FILE[i].next=NULL;
+    CACHE_FILE = malloc(CACHE_SIZE*sizeof(Cache_file));
+    for(int i = 0; i < CACHE_SIZE-1; ++i){
+        CACHE_FILE[i].valid=-1; // -1 means not used
+        if(i == 0){
+            CACHE_FILE[i].prev = &CACHE_FILE[CACHE_SIZE-1];
+            CACHE_FILE[CACHE_SIZE-1].next = &CACHE_FILE[i];
+        }
+        CACHE_FILE[i].next = &CACHE_FILE[i+1];
+        CACHE_FILE[i+1].prev = &CACHE_FILE[i];
     }
 
 
@@ -92,25 +102,51 @@ void* proxy(void* fd){
 
     if(strcasecmp(method, "GET")){
         client_error(conn_fd, method, "501", "Not implemented", "Tiny does not implement this method");
-        return -1;
+        return (void *)-1;
     }
 
     //cache operation
-    int check_cache = -1, length = 0;
-    check_cache = check_cache(url);
+    int cached = -1, length = 0;
+    char save_path[MAXLINE] = "./cache";
 
 
-    if(check_cache){
-
+    char hostname[MAXLINE], pathname[MAXLINE], end_server_http_header[MAXLINE];
+    int proxy_conn_fd, port;
+    parse_uri(url, hostname, pathname, &port);
+    build_http_header(end_server_http_header, hostname, pathname, port, &rio);
+    strcat(save_path, pathname);
+    cached = check_cache(save_path);
+    if(cached){
+        Cache_file* tmp = CACHE_FILE;
+        P(&CACHE);
+        for(; tmp->next != CACHE_FILE; tmp = tmp->next){
+            if(!strcmp(tmp->uri, save_path)){
+                FILE* cached_file = Fopen(save_path, "r");
+                while((n=Fread(buf, sizeof(char), MAXLINE, cached_file)) > 0){
+                    Rio_writen(conn_fd, buf, (int)n);
+                }
+                // Linked list change
+                tmp->prev->next = tmp->next;
+                tmp->next->prev = tmp->prev;
+                CACHE_FILE->prev->next = tmp;
+                CACHE_FILE->prev = tmp;
+                tmp->next = CACHE_FILE;
+                tmp->prev = CACHE_FILE->prev;
+                CACHE_FILE = tmp;
+                break;
+            }
+        }
+        V(&CACHE);
     }else{
-        char hostname[MAXLINE], pathname[MAXLINE], end_server_http_header[MAXLINE];
-        int proxy_conn_fd, port;
-        parse_uri(url, hostname, pathname, &port);
-        build_http_header(end_server_http_header, hostname, pathname, port, &rio);
+
+
+        FILE* save;
+        printf("The pathname is %s\n", save_path);
+        save = Fopen(save_path, "a");
 
         if((proxy_conn_fd = connect_to_endserver(hostname, port)) < 0){
             fprintf(stderr, "proxy connect error");
-            return -2;
+            return (void *)-2;
         }
         Rio_writen(proxy_conn_fd,end_server_http_header,strlen(end_server_http_header));
         char key[MAXLINE], value[MAXLINE], content_length[MAXLINE];
@@ -118,28 +154,30 @@ void* proxy(void* fd){
         //Read the status line
         if((n = Rio_readlineb(&server_rio, buf, MAXLINE)) > 0){
             Rio_writen(conn_fd, buf, strlen(buf));
+            Fwrite(buf, sizeof(char), (int)n, save);
         }
         //Read and transmit the response header
         while((n = Rio_readlineb(&server_rio, buf, MAXLINE)) > 0 && strcmp(buf, "\r\n")){
-            //printf("%s", buf);
             sscanf(buf, "%s %s", key, value);
-            //printf("%s, %s\n", key, value);
             if(!strcmp(key, "Content-length:")){
                 strcpy(content_length, value);
                 length = atoi(content_length);
-                //printf("The Content-length is %s\n", content_length);
             }
             Rio_writen(conn_fd, buf, strlen(buf));
+            Fwrite(buf, sizeof(char), (int)n, save);
         }
         Rio_writen(conn_fd, buf, strlen(buf)); // write /r/n to the conn_fd
+        Fwrite(buf, sizeof(char), (int)n, save);
 
         while((n = Rio_readlineb(&server_rio, buf, MAXBUF)) > 0){
             //printf("Proxy server receive %d bytes\n", (int)n);
             Rio_writen(conn_fd, buf, (int)n);
+            Fwrite(buf, sizeof(char), (int)n, save);
         }
+        Fclose(save);
 
         P(&CACHE);
-        check_cache = cache_add(url);
+        change_cache(save_path, length);
         V(&CACHE);
     }
 
@@ -157,23 +195,68 @@ void* proxy(void* fd){
 
     printf("%s", log_string);
     Close(conn_fd);
-    return 0;
+    return (void *)0;
 }
 
-void add_cache(char* uri, int length){
+
+
+void change_cache(char* uri, int length){
     struct Cache_file* tmp = CACHE_FILE;
     P(&CACHE);
+    for(; tmp->next != CACHE_FILE; tmp = tmp->next){
+        if(tmp->valid == -1){
+            // Not used cache space
+            strcpy(tmp->uri, uri);
+            tmp->length = length;
+            tmp->valid = 1;
+            // Linked list change
+            tmp->prev->next = tmp->next;
+            tmp->next->prev = tmp->prev;
+            CACHE_FILE->prev->next = tmp;
+            CACHE_FILE->prev = tmp;
+            tmp->next = CACHE_FILE;
+            tmp->prev = CACHE_FILE->prev;
+            CACHE_FILE = tmp;
+            break;
+        }
+    }
+    //Operation for the least recently used element
+    if(tmp->valid == -1){
+        //Not used
+        strcpy(tmp->uri, uri);
+        tmp->length = length;
+        tmp->valid = 1;
+
+        tmp->prev->next = tmp->next;
+        tmp->next->prev = tmp->prev;
+        CACHE_FILE->prev->next = tmp;
+        CACHE_FILE->prev = tmp;
+        tmp->next = CACHE_FILE;
+        tmp->prev = CACHE_FILE->prev;
+        CACHE_FILE = tmp;
+    }else{
+        //used and eviction
+        remove(tmp->uri);
+        strcpy(tmp->uri, uri);
+        tmp->length = length;
+        CACHE_FILE = tmp;
+    }
+
     V(&CACHE);
 }
 
 int check_cache(char* uri){
     struct Cache_file* tmp = CACHE_FILE;
     P(&CACHE);
-    for(; tmp->next !=NULL; tmp = tmp->next){
+    for(; tmp->next !=CACHE_FILE; tmp = tmp->next){
         if(!strcmp(tmp->uri, uri)){
             V(&CACHE);
             return 1;
         }
+    }
+    if(!strcmp(tmp->uri, uri)) {
+        V(&CACHE);
+        return 1;
     }
     V(&CACHE);
     return 0;
